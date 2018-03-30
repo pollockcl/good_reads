@@ -5,11 +5,21 @@ RSpec.describe Review, type: :model do
     it 'must have a body' do
       user = User.create(name: 'Farquad')
       book = Book.create(title: 'Shrek')
-      review = user.reviews.create()
+      review = user.reviews.create(score: 5)
 
       book.reviews << review
 
       expect(review).to_not be_valid
+    end
+
+    it 'must have a score' do
+      user = User.create(name: 'Farquad')
+      book = Book.create(title: 'Shrek')
+      review = user.reviews.create(body: 'bad book')
+
+      book.reviews << review
+
+      expect(book).to be_valid
     end
 
     it 'is valid with all attributes' do
@@ -27,7 +37,7 @@ RSpec.describe Review, type: :model do
     it 'belongs to a user' do
       user = User.create(name: 'Farquad')
       book = Book.create(title: 'Shrek')
-      review = user.reviews.create(body: 'bad book')
+      review = user.reviews.create(body: 'bad book', score: 2)
 
       book.reviews << review
 
@@ -38,7 +48,7 @@ RSpec.describe Review, type: :model do
     it 'belongs to a book' do
       user = User.create(name: 'Farquad')
       book = Book.create(title: 'Shrek')
-      review = user.reviews.create(body: 'bad book')
+      review = user.reviews.create(body: 'bad book', score: 2)
 
       book.reviews << review
 
