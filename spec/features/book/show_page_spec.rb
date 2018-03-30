@@ -53,7 +53,8 @@ context 'user visits' do
 
       visit book_path(book)
 
-      expect(page).to have_content(book.max_rating)
+      expect(page).to have_content(book.max_rating.score)
+      expect(page).to have_content(book.max_rating.body, count: 2)
     end
 
     scenario 'the book has a min rating' do
@@ -69,7 +70,8 @@ context 'user visits' do
 
       visit book_path(book)
 
-      expect(page).to have_content(book.min_rating)
+      expect(page).to have_content(book.min_rating.score)
+      expect(page).to have_content(book.min_rating.body, count: 2)
     end
   end
 end

@@ -1,7 +1,16 @@
 <%= book.title %>
 <%= book.average_rating %>
-<%= book.max_rating %>
-<%= book.min_rating %>
+
+<div class="highest">
+  <%= book.max_rating.score %>
+  <%= book.max_rating.body %>
+</div>
+
+<div class="lowest">
+  <%= book.min_rating.score %>
+  <%= book.min_rating.body %>
+</div>
+
 <% book.reviews.each do |review| %>
   <%= review.score %>
   <%= review.body %>
