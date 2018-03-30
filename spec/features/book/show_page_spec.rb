@@ -55,6 +55,8 @@ context 'user visits' do
 
       expect(page).to have_content(book.max_rating.score)
       expect(page).to have_content(book.max_rating.body, count: 2)
+      expect(page).to have_content(book.max_rating.user.name)
+
     end
 
     scenario 'the book has a min rating' do
@@ -72,6 +74,7 @@ context 'user visits' do
 
       expect(page).to have_content(book.min_rating.score)
       expect(page).to have_content(book.min_rating.body, count: 2)
+      expect(page).to have_content(book.min_rating.user.name)
     end
   end
 end

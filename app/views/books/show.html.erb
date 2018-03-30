@@ -4,11 +4,13 @@
 <div class="highest">
   <%= book.max_rating.score %>
   <%= book.max_rating.body %>
+  <%= book.max_rating.user.name %>
 </div>
 
 <div class="lowest">
   <%= book.min_rating.score %>
   <%= book.min_rating.body %>
+  <%= book.min_rating.user.name %>
 </div>
 
 <% book.reviews.each do |review| %>
