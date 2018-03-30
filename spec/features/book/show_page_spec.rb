@@ -18,10 +18,13 @@ context 'user visits' do
       expect(page).to have_content(book.title)
       expect(page).to have_content(review1.body)
       expect(page).to have_content(review1.score)
+      expect(page).to have_content(review1.user.name)
       expect(page).to have_content(review2.body)
       expect(page).to have_content(review2.score)
+      expect(page).to have_content(review2.user.name)
       expect(page).to have_content(review3.body)
       expect(page).to have_content(review3.score)
+      expect(page).to have_content(review3.user.name)
     end
 
     scenario 'the book has an average rating' do

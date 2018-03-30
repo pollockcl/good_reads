@@ -16,4 +16,5 @@
 <% book.reviews.each do |review| %>
   <%= review.score %>
   <%= review.body %>
+  <%= review.user.name %>
 <% end %>
