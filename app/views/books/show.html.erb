@@ -1,5 +1,7 @@
 <%= book.title %>
 <%= book.average_rating %>
+<%= book.max_rating %>
+<%= book.min_rating %>
 <% book.reviews.each do |review| %>
   <%= review.score %>
   <%= review.body %>

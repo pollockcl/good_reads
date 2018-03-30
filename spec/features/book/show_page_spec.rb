@@ -39,5 +39,37 @@ context 'user visits' do
 
       expect(page).to have_content(book.average_rating)
     end
+
+    scenario 'the book has a max rating' do
+      book = Book.create(title: 'Shrek')
+      user = User.create(name: 'Farquad')
+      review1 = Review.create(body: 'bad review', score: 2, user_id: user.id)
+      review2 = Review.create(body: 'good review', score: 4, user_id: user.id)
+      review3 = Review.create(body: 'neutral review', score: 3, user_id: user.id)
+
+      book.reviews << review1
+      book.reviews << review2
+      book.reviews << review3
+
+      visit book_path(book)
+
+      expect(page).to have_content(book.max_rating)
+    end
+
+    scenario 'the book has a min rating' do
+      book = Book.create(title: 'Shrek')
+      user = User.create(name: 'Farquad')
+      review1 = Review.create(body: 'bad review', score: 2, user_id: user.id)
+      review2 = Review.create(body: 'good review', score: 4, user_id: user.id)
+      review3 = Review.create(body: 'neutral review', score: 3, user_id: user.id)
+
+      book.reviews << review1
+      book.reviews << review2
+      book.reviews << review3
+
+      visit book_path(book)
+
+      expect(page).to have_content(book.min_rating)
+    end
   end
 end
